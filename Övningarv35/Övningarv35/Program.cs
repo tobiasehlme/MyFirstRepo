@@ -181,6 +181,7 @@ while (lek == 1)
 // Dators val slumpas med Random. Skriv sedan ut vad datorn valde, och vem som vann omgången.
 // Lägg det hela i en loop så spelet fortsätter tills man matar in en tom sträng (trycker enter utan att skriva något). Skriv även ut poäng.
 
+
 string[] SSP = { "Sten", "Sax", "Påse" };
 int kör = 1;
 int poäng = 0;
@@ -259,9 +260,23 @@ while (kör == 1)
 
 }
 
+10. Be användaren mata in en sträng. Skriv ut varje tecken i strängen på en egen rad. Ex:
+
+Hej
+H
+e
+j
 
 
+Console.WriteLine("Skriv en sträng som ska delas upp");
+var input = Console.ReadLine();
+for (int i = 0; i < input.Length; i++)
+{
+    Console.WriteLine(input[i]);
+}
+Console.ReadLine();
+
+11. Skapa ett program med en array som innehåller strängarna “noll”, “ett”, “två”, “tre”, “fyra”, “fem”, “sex”, “sju”, “åtta”, “nio”. 
+Be sedan användaren att mata in en siffra. Använd arrayen för att skriva ut siffrans ord. Ex. Inmatning “3” => “tre”.
 */
-
-
 
