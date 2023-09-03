@@ -270,17 +270,16 @@ j
 
 
 Console.WriteLine("Skriv en sträng som ska delas upp");
-var input = Console.ReadLine();
+string input = Console.ReadLine();
 for (int i = 0; i < input.Length; i++)
 {
     Console.WriteLine(input[i]);
 }
-Console.ReadLine();
 
 11. Skapa ett program med en array som innehåller strängarna “noll”, “ett”, “två”, “tre”, “fyra”, “fem”, “sex”, “sju”, “åtta”, “nio”. 
 Be sedan användaren att mata in en siffra. Använd arrayen för att skriva ut siffrans ord. Ex. Inmatning “3” => “tre”.
 Extra utmaning: Användaren kan mata in en sträng med fritt antal siffror, om man skriver in t.ex 432 så svarar programmet: “fyra-tre-två”.
-*/
+
 
 string[] nummer = new string[] { "Noll", "Ett", "Två", "Tre", "Fyra", "Fem", "Sex", "Sju", "Åtta", "Nio" }; // Array skapas
 Console.WriteLine("Skriv en siffra"); // Frågar efter siffra
@@ -310,5 +309,171 @@ else // Kommer till detta läge ifall man har skrivit flera nummer
         }
     }
 }
+
 // Behöver skriva om då det finns ett bättre sätt.
+//
+// 12. Fråga användaren hur många tal den vill mata in. Fråga sedan efter talen i tur och ordning (“Ange tal 1:” osv).
+// När alla tal är inmatade skriv ut dem i omvänd ordning.
+
+Console.WriteLine("Hur många tal vill du skriva in?");
+int userindex = int.Parse(Console.ReadLine());
+int[] tal = new int[userindex];
+int counter = 1;
+for (int i = 0; i < tal.Length; i++)
+{
+    Console.WriteLine("Ange tal " + counter + ":");
+    int holder = int.Parse(Console.ReadLine());
+    tal[i] = holder;
+    counter++;
+}
+Array.Reverse(tal);
+for (int i = 0;i < tal.Length; i++)
+{
+    Console.Write(tal[i]);
+}
+
+13. Be användaren mata in en text. Skriv sedan ut texten baklänges.
+
+
+Console.WriteLine("Skriv en text för att skrivas ut baklänges");
+string userinput = Console.ReadLine();
+string[] omvandlare = new string[userinput.Length];
+for (int i = 0; i < userinput.Length; i++)
+{
+    omvandlare[i] += userinput[i];
+}
+Array.Reverse(omvandlare);
+for (int i = 0;i < omvandlare.Length;i++)
+{
+    Console.Write(omvandlare[i]);
+}
+
+14. Be användaren mata in en text. Skriv ut texten med alla vokaler ersatta med *
+
+Console.WriteLine("Skriv en text för att ersätta alla vokaler");
+string userinput = Console.ReadLine();
+string[] konsonanter = new string[userinput.Length];
+userinput = userinput.ToLower();
+for (int i = 0; i < konsonanter.Length; i++)
+{
+    if (userinput[i] == 'a' || userinput[i] == 'o' || userinput[i] == 'u' || userinput[i] == 'å' || userinput[i] == 'e' || userinput[i] == 'i' || userinput[i] == 'y' || userinput[i] == 'ä' || userinput[i] == 'ö')
+    {
+        konsonanter[i] += "*";
+    }
+    else
+    {
+        konsonanter[i] += userinput[i];
+    }
+}
+for (int i = 0;i < konsonanter.Length; i++)
+{
+    Console.Write(konsonanter[i]);
+}
+
+// Extra utmaning: Skriv ut texten översatt till rövarspråket.
+
+Console.WriteLine("Skriv en text som ska översättas till röverspråket");
+string userinput = Console.ReadLine();
+string[] konsonanter = new string[userinput.Length];
+userinput = userinput.ToLower();
+for (int i = 0; i < konsonanter.Length; i++)
+{
+    if (userinput[i] == 'a' || userinput[i] == 'o' || userinput[i] == 'u' || userinput[i] == 'å' || userinput[i] == 'e' || userinput[i] == 'i' || userinput[i] == 'y' || userinput[i] == 'ä' || userinput[i] == 'ö')
+    {
+        konsonanter[i] += userinput[i];
+    }
+    else if (userinput[i] == ' ')
+    {
+        konsonanter[i] += ' ';
+    }
+    else
+    {
+        konsonanter[i] += userinput[i];
+        konsonanter[i] += "o";
+        konsonanter[i] += userinput[i];
+
+    }
+}
+for (int i = 0; i < konsonanter.Length; i++)
+{
+    Console.Write(konsonanter[i]);
+}
+
+// 15. Ett palindrom är ett ord som blir samma framlänges som baklänges.
+// Be användaren skriva in ett ord och ange sedan om det är ett palindrom eller inte.
+Console.WriteLine("Skriv ett ord som du tror är ett palindrom");
+string userinput = Console.ReadLine();
+int nummer = 1;
+char holder;
+for (int i = 0; i <= userinput.Length - 1; i++)
+{
+    holder = userinput[userinput.Length - nummer];
+    if (userinput[i] == holder)
+    {
+        nummer++;
+    }
+    else if (userinput[i] != holder)
+    {
+        Console.WriteLine("Detta är ingen palindrom");
+        break;
+    }
+}
+nummer = 0;
+if (userinput[nummer] == userinput[userinput.Length - 1])
+{
+    Console.WriteLine("Det är ett palindrom!");
+    
+}
+
+16.Skriv ett program som först frågar efter ett tal, sedan frågar efter ett av följande tecken: +, -, *eller /.
+Därefter ska ytterligare ett tal efterfrågas. Programmet ska fungera som en simpel miniräknare.
+Om man t.ex matat in först 3, sedan *, och sist 5, så ska programmet skriva ut: 3 * 5 = 15.
+Gör om uppgift 6 så man kan mata in allt på en rad (första talet, operator, andra talet).
+Ignorera inmatade mellanslag i strängen. Om man t.ex. matar in strängen “34 - 14”, så ska programmet skriva ut “= 20”.
+*/
+
+Console.WriteLine("Skriv en beräkning som ska uträknas.");
+string userinput = Console.ReadLine();
+string[] holder = new string[userinput.Length];
+for (int i = 0; i <= userinput.Length - 1; i++)
+{
+    if (userinput[i] != ' ')
+    {
+        holder[i] += userinput[i];
+    }
+}
+int tal = 0;
+string test2 = "";
+for (int i = 0;i < holder.Length - 1; i++)
+{
+    if (holder[i] != null)
+    {
+        if (int.Parse(holder[i]) is int)
+        {
+            Console.WriteLine("teeeest");
+        }
+        if (holder[i] != "+" && holder[i + 1] != "+")
+        {
+            if (holder[i] != "*" && holder[i + 1] != "*")
+            {
+                if (holder[i] != "-" && holder[i + 1] != "-")
+                {
+                    if (holder[i] != "/" && holder[i + 1] != "/")
+                    {
+                        tal = int.Parse(holder[i] + holder[i + 1]);
+                        Console.WriteLine(tal);
+                    }
+                }
+            }
+        }
+
+    }
+    
+}
+
+
+
+//Lägg userinputs i en array
+//gå igenom array och leta fram mellanslagen
+//byt ut mellanslagen med indexet efter.
 Console.ReadKey();
